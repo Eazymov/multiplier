@@ -3,8 +3,8 @@
     form.app-aside(@submit.prevent="calculate")
       button.btn--primary(type="submit") Умножить матрицы
 
-      button.btn--default(type="button") Очистить матрицы
-      button.btn--default(type="button") Поменять матрицы местами
+      button.btn--default(type="button" @click="clearMatrix") Очистить матрицы
+      button.btn--default(type="button" @click="swapMatrix") Поменять матрицы местами
 
       div.radio
         input(type="radio"
@@ -32,7 +32,7 @@
 
     section.app-content
       div.matrix.matrix--c
-        div.row(v-for="(row, rowIndex) in matrixes.C" type="text")
+        div.row(v-for="(row, rowIndex) in resultMatrix" type="text")
           input(v-for="(item, index) in row"
                 :placeholder="`c${rowIndex + 1},${index + 1}`"
                 disabled)

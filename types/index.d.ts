@@ -1,5 +1,3 @@
-declare interface Matrix {
-  rows: number;
-  cols: number;
-  values: Array<number[]>
-}
+declare type Matrix = Array<(number|undefined)[]>
+
+declare type Row = Array<number|undefined>
