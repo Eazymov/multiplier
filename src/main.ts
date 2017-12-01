@@ -6,7 +6,8 @@ import './default.sass'
 
 Vue.config.productionTip = false
 
-new Vue({
-  el: '#root',
+const app: Vue = new Vue({
   render: (h: CreateElement) => h(App),
 })
+
+app.$mount('#root')

@@ -32,20 +32,25 @@
 
     section.app-content
       div.matrix.matrix--c
-        div.row(v-for="(row, rowIndex) in resultMatrix" type="text")
+        div.row(v-for="(row, rowIndex) in resultMatrix")
           input(v-for="(item, index) in row"
                 :placeholder="`c${rowIndex + 1},${index + 1}`"
                 disabled)
 
       div.matrix.matrix--a
-        div.row(v-for="(row, rowIndex) in matrixes.A" type="text")
+        span.title A
+        div.row(v-for="(row, rowIndex) in matrixes.A")
           input(v-for="(item, index) in row"
+                type="number"
                 v-model.number="matrixes.A[rowIndex][index]"
                 :placeholder="`a${rowIndex + 1},${index + 1}`")
 
       div.matrix.matrix--b
-        div.row(v-for="(row, rowIndex) in matrixes.B" type="text")
+        span.title B
+        div.row(v-for="(row, rowIndex) in matrixes.B")
           input(v-for="(item, index) in row"
+                type="number"
+                v-model.number="matrixes.B[rowIndex][index]"
                 :placeholder="`b${rowIndex + 1},${index + 1}`")
 
 </template>

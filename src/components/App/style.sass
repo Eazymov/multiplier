@@ -1,4 +1,5 @@
-$primary: #26b400
+@import '~variables'
+@import '~mixins'
 
 .app
   flex-flow: row nowrap
@@ -28,13 +29,12 @@ $primary: #26b400
 
     &::before,
     &::after
+      @include pseudo
       background-color: $primary
       transform: rotate(45deg)
-      position: absolute
       border-radius: 4px
       height: 32px
       width: 32px
-      content: ''
       top: 5px
 
     &::before
@@ -47,12 +47,7 @@ $primary: #26b400
       z-index: -1
 
   .btn--default
-    border: 1px solid rgba(#666, .5)
-    background-color: #fff
-    margin: 6px 10px 6px 0
-    border-radius: 2px
-    padding: 5px 8px
-    cursor: pointer
+    @include btn-default
 
   .radio
     align-items: center
@@ -60,18 +55,7 @@ $primary: #26b400
     display: flex
 
     input
-      display: inline-block
-      cursor: pointer
-      display: none
-      height: 16px
-      width: 16px
-
-      &:checked + label::after
-        width: 8px
-        height: 8px
-        background-color: #999
-        top: 5.5px
-        left: 4px
+      @include radio
 
     label
       display: inline-block
@@ -80,20 +64,6 @@ $primary: #26b400
       font-size: 1.2rem
       padding-left: 22px
       cursor: pointer
-      
-      &::before,
-      &::after
-        position: absolute
-        border-radius: 50%
-        content: ''
-
-      &::before
-        border: 1px solid rgba(#666, .5)
-        background-color: #fff
-        height: 16px
-        width: 16px
-        top: 1.5px
-        left: 0
 
   &-content
 
@@ -101,17 +71,22 @@ $primary: #26b400
       margin: 30px 15px 30px 45px
       position: relative
       float: left
-      
+      &--a
+        .title
+          top: calc(50% - 14px)
+          right: -40px
       &--b
         clear: both
+        .title
+          left: calc(50% - 8px)
+          bottom: -40px
 
       &::before,
       &::after
+        @include pseudo
         height: calc(100% + 14px)
-        position: absolute
         border: 3px solid
         width: 13px
-        content: ''
         top: -7px
 
       &::before
@@ -122,7 +97,13 @@ $primary: #26b400
         border-color: #777 #777 #777 transparent
         right: -7px
 
+      .title
+        position: absolute
+        line-height: 2rem
+        font-size: 2rem
+
       input
+        @include number-field
         border: 1px solid #ddd
         padding: 10px 5px 0
         vertical-align: top

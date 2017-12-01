@@ -17,6 +17,8 @@ const config = {
     alias: {
       '@': resolve('src'),
       'components': resolve('src/components'),
+      'mixins': resolve('src/mixins.sass'),
+      'variables': resolve('src/variables.sass'),
     },
   },
   module: {
@@ -24,6 +26,14 @@ const config = {
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000',
+      }, {
+        test: /\.ts$/,
+        enforce: 'pre',
+        loader: 'tslint-loader',
+        include: resolve('src'),
+        options: {
+          emitErrors: true,
+        },
       }, {
         test: /\.js$/,
         loader: 'babel-loader',
