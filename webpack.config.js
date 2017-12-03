@@ -17,8 +17,10 @@ const config = {
     alias: {
       '@': resolve('src'),
       'components': resolve('src/components'),
-      'mixins': resolve('src/mixins.sass'),
-      'variables': resolve('src/variables.sass'),
+      'utils': resolve('src/utils'),
+      'icons': resolve('src/assets/icons'),
+      'mixins': resolve('src/mixins.scss'),
+      'variables': resolve('src/variables.scss'),
     },
   },
   module: {
@@ -51,7 +53,7 @@ const config = {
           'css-loader',
         ],
       }, {
-        test: /\.sass$/,
+        test: /\.scss$/,
         use: [
           'style-loader',
           'css-loader',

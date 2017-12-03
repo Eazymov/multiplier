@@ -4,7 +4,10 @@
   "description": "SKB Kontur test task",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --watch"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --watch",
+    "build": "cross-env NODE_ENV=production webpack",
+    "test": "karma start",
+    "start": "serve"
   },
   "repository": {
     "type": "git",
@@ -28,6 +31,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jasmine": "^2.8.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
@@ -35,6 +39,11 @@
     "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
     "file-loader": "^1.1.5",
+    "jasmine": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-webpack": "^2.0.6",
     "node-sass": "^4.7.2",
     "pug": "^2.0.0-rc.4",
     "pug-html-loader": "^1.1.5",

@@ -1,0 +1,170 @@
+@import '~variables';
+@import '~mixins';
+
+$icons: 'clear' 'swap' 'add' 'remove';
+
+.app {
+  flex-flow: row nowrap;
+  display: flex;
+  width: 100%;
+
+  &-aside {
+    background-color: #ccc;
+    padding: 50px 50px;
+    min-height: 100vh;
+    width: 400px;
+
+    &.error {
+      background-color: #f8bdbd;
+    }
+    &.editing {
+      background-color: #64B5F6;
+    }
+  }
+
+  .btn--primary {
+    border: 1px solid rgba(#666, .5);
+    border-right-color: transparent;
+    padding: 10px 10px 10px 16px;
+    background-color: $primary;
+    margin-bottom: 60px;
+    border-radius: 4px;
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+    height: 44px;
+    color: #fff;
+    z-index: 2;
+
+    &::before,
+    &::after {
+      @include pseudo;
+      background-color: $primary;
+      transform: rotate(45deg);
+      border-radius: 4px;
+      transition: .2s;
+      height: 32px;
+      width: 32px;
+      top: 5px;
+    }
+    &::before {
+      border: 1px solid rgba(#000, .3);
+      right: -15px;
+      z-index: -2;
+    }
+    &::after {
+      right: -14px;
+      z-index: -1;
+    }
+    &:hover {
+      background-color: darken($primary, 3);
+      &::before,
+      &::after {
+        background-color: darken($primary, 3);
+      }
+    }
+    &:active {
+      box-shadow: inset 1px 1px 2px rgba(#000, .3);
+      text-shadow: -1px -1px 1px rgba(#000, .5);
+    }
+  }
+
+  .btn--default {
+    @include btn-default;
+
+    @each $icon in $icons {
+      &.#{$icon}::before {
+        background-image: url('~icons/#{$icon}.png');
+      }
+    }
+  }
+
+  .radio {
+    align-items: center;
+    margin: 60px 0 10px;
+    display: flex;
+
+    input {
+      @include radio;
+    }
+
+    label {
+      display: inline-block;
+      margin: 0 20px 0 0;
+      position: relative;
+      padding-left: 22px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
+
+  .error-text {
+    margin-top: 60px;
+    color: red;
+    font-weight: bold;
+  }
+
+  &-content {
+
+    .matrix {
+      margin: 30px 15px 30px 45px;
+      position: relative;
+      float: left;
+      &--A {
+        .title {
+          top: calc(50% - 14px);
+          right: -40px;
+        }
+      }
+      &--B {
+        clear: both;
+        .title {
+          left: calc(50% - 8px);
+          bottom: -40px;
+        }
+      }
+      &::before,
+      &::after {
+        @include pseudo;
+        height: calc(100% + 14px);
+        border: 3px solid;
+        width: 13px;
+        top: -7px;
+      }
+      &::before {
+        border-color: #777 transparent #777 #777;
+        left: -7px;
+      }
+      &::after {
+        border-color: #777 #777 #777 transparent;
+        right: -7px;
+      }
+      .title {
+        position: absolute;
+        line-height: 2rem;
+        font-size: 2rem;
+      }
+      input {
+        @include number-field;
+        border: 1px solid #ccc;
+        border-top: 1px solid #999;
+        padding: 10px 5px 0;
+        vertical-align: top;
+        text-align: center;
+        line-height: 20px;
+        transition: .2s;
+        height: 42px;
+        width: 42px;
+        margin: 6px;
+
+        &:focus {
+          box-shadow: 0 0 1px #03A9F4;
+          border: 2px solid #03A9F4;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}
