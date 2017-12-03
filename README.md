@@ -9,11 +9,11 @@ npm install
 ## Start
 
 ```
-npm run start
+npm start
 ```
 
 ## Test
 
 ```
-npm run test
+npm test
 ```
