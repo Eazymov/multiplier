@@ -31,13 +31,13 @@ class App extends Vue {
   public getResultValue (rowIndex: number, colIndex: number): number|undefined {
     const row: Array<(number|undefined)> = this.resultMatrix[rowIndex];
 
-    if (!row || !row[colIndex]) {
+    if (!row || row[colIndex] === undefined) {
       return undefined
     }
 
     return row[colIndex]
   }
-  
+
   public swapMatrix (): void {
     const A = this.matrixes.A
     const B = this.matrixes.B
@@ -45,7 +45,7 @@ class App extends Vue {
     this.matrixes.A = B
     this.matrixes.B = A
   }
-  
+
   public clearMatrix (): void {
     const { clearRow, resultMatrix } = this
     const { A, B } = this.matrixes
@@ -62,7 +62,7 @@ class App extends Vue {
     const bRowCount: number = B.length
     const aColCount: number = A[0].length
     const bColCount: number = B[0].length
-    
+
     if (aColCount !== bRowCount) {
       this.error = new Error(`Такие матрицы нельзя перемножить 
                               так как количество столбцов матрицы 
